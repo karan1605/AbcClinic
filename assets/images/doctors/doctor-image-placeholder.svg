@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="[DOCTOR_IMAGE] Specialist Portrait Placeholder">
+  <defs>
+    <linearGradient id="docBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F9FE"/>
+      <stop offset="100%" stop-color="#E4EFFC"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" rx="16" fill="url(#docBg)"/>
+  <circle cx="400" cy="222" r="44" fill="#025EC1" fill-opacity="0.14"/>
+  <path d="M332 332C332 294 362 276 400 276C438 276 468 294 468 332" fill="#025EC1" fill-opacity="0.14"/>
+  <rect x="282" y="352" width="236" height="46" rx="10" fill="#FFFFFF" stroke="#025EC1" stroke-opacity="0.2"/>
+  <text x="400" y="382" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="19" font-weight="700" fill="#213245">[DOCTOR_IMAGE]</text>
+  <text x="400" y="428" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="14" font-weight="500" fill="#59616B">Replace With Verified Doctor Portrait</text>
+</svg>

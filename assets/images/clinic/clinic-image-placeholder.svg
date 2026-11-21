@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="[CLINIC_IMAGE] ABC Clinic Facility Placeholder">
+  <defs>
+    <linearGradient id="clinicBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5F9FE"/>
+      <stop offset="100%" stop-color="#E2EEFC"/>
+    </linearGradient>
+    <pattern id="clinicGrid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0V36" fill="none" stroke="#025EC1" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" rx="16" fill="url(#clinicBg)"/>
+  <rect width="800" height="600" rx="16" fill="url(#clinicGrid)"/>
+  <circle cx="400" cy="245" r="46" fill="#025EC1" fill-opacity="0.1"/>
+  <rect x="378" y="222" width="44" height="46" rx="6" fill="none" stroke="#025EC1" stroke-width="4"/>
+  <path d="M400 233V257M388 245H412" stroke="#025EC1" stroke-width="4" stroke-linecap="round"/>
+  <rect x="284" y="314" width="232" height="46" rx="10" fill="#FFFFFF" stroke="#025EC1" stroke-opacity="0.2"/>
+  <text x="400" y="344" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="19" font-weight="700" fill="#213245">[CLINIC_IMAGE]</text>
+  <text x="400" y="390" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="14" font-weight="500" fill="#59616B">Replace With Verified ABC Clinic Facility Photograph</text>
+</svg>
