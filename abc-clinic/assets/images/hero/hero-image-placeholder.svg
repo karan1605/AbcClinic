@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="1200" height="820" role="img" aria-label="[HERO_IMAGE] ABC Clinic Hero Placeholder">
+  <defs>
+    <linearGradient id="heroBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#01264D"/>
+      <stop offset="55%" stop-color="#013874"/>
+      <stop offset="100%" stop-color="#025EC1"/>
+    </linearGradient>
+    <pattern id="heroGrid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M44 0H0V44" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="820" rx="20" fill="url(#heroBg)"/>
+  <rect width="1200" height="820" rx="20" fill="url(#heroGrid)"/>
+  <circle cx="1020" cy="140" r="170" fill="#FFFFFF" fill-opacity="0.06"/>
+  <circle cx="160" cy="690" r="140" fill="#FFFFFF" fill-opacity="0.05"/>
+  <circle cx="600" cy="340" r="54" fill="#FFFFFF" fill-opacity="0.14"/>
+  <path d="M600 314V366M574 340H626" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+  <rect x="468" y="422" width="264" height="52" rx="10" fill="#FFFFFF" fill-opacity="0.16" stroke="#FFFFFF" stroke-opacity="0.28"/>
+  <text x="600" y="455" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">[HERO_IMAGE]</text>
+  <text x="600" y="510" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="16" font-weight="500" fill="#FFFFFF" fill-opacity="0.78">ABC Clinic · Dhanbad, Jharkhand — Replace With Clinic Hero Photograph</text>
+</svg>

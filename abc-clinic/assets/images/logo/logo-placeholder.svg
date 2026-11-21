@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="[LOGO_PLACEHOLDER] ABC Clinic">
+  <rect width="120" height="120" rx="26" fill="#025EC1"/>
+  <circle cx="60" cy="60" r="42" fill="none" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="4"/>
+  <path d="M60 32V88M32 60H88" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+</svg>

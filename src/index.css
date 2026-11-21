@@ -1,0 +1,311 @@
+@import "tailwindcss";
+
+:root {
+  /* Reference Design System Tokens (DESIGN.md) */
+  --color-primary: #025EC1;
+  --color-primary-tint: rgba(2, 94, 193, 0.06);
+  --color-primary-overlay: rgba(2, 94, 193, 0.71);
+  --color-dark: #213245;
+  --color-text: #59616B;
+  --color-white: #FFFFFF;
+  --color-white-muted: rgba(255, 255, 255, 0.7);
+  --color-light: #F5F9FE;
+  --color-light-gray: #F5F6F6;
+  --color-red-accent: #ED2E27;
+  --color-red-soft: rgba(237, 46, 39, 0.8);
+  --color-red-deep: #89181A;
+  --color-navy-dark: #01264D;
+  --color-navy-secondary: #013874;
+  --color-gradient-yellow: #F9CE34;
+  --color-gradient-pink: #EE2A7B;
+  --color-gradient-purple: #6228D7;
+  --input-border: #D1D8E0;
+
+  /* Typography */
+  --font-primary: 'Manrope', sans-serif;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-card: 12px;
+  --radius-button: 50px;
+  --radius-pill: 100px;
+
+  /* Shadows */
+  --shadow-card: 0 2px 12px rgba(33, 50, 69, 0.08);
+  --shadow-card-hover: 0 12px 28px rgba(2, 94, 193, 0.12);
+
+  /* Motion */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-standard: 0.3s ease-in-out;
+  --transition-medium: 0.4s ease-in-out;
+  --transition-slow: 0.6s ease-in-out;
+
+  /* Section Spacing */
+  --section-padding: 100px;
+  --container-max: 1320px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-primary);
+    color: var(--color-text);
+    background-color: var(--color-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+    color: var(--color-text);
+    background-color: var(--color-white);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    color: var(--color-dark);
+    text-wrap: balance;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* Typography Hierarchy from DESIGN.md */
+.heading-hero {
+  font-size: clamp(2.125rem, 4.2vw, 3.25rem); /* 52px desktop */
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.heading-section {
+  font-size: clamp(1.875rem, 3.6vw, 3rem); /* 48px desktop */
+  font-weight: 700;
+  line-height: 1.167;
+  letter-spacing: -0.02em;
+}
+
+.heading-sub {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: -0.02em;
+}
+
+/* Reference Primary Pill Buttons (a.primary-btn & a.primary-btn.white) */
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 24px 8px 8px;
+  border-radius: var(--radius-button);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+  text-transform: capitalize;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background-color var(--transition-standard), transform var(--transition-fast), box-shadow var(--transition-standard);
+}
+
+.primary-btn:hover {
+  background-color: var(--color-navy-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(2, 94, 193, 0.25);
+}
+
+.primary-btn .btn-icon-disc {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  transition: transform var(--transition-standard);
+  flex-shrink: 0;
+}
+
+.primary-btn:hover .btn-icon-disc {
+  transform: translateX(2px);
+}
+
+.primary-btn.white {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  box-shadow: 0 2px 10px rgba(33, 50, 69, 0.08);
+}
+
+.primary-btn.white:hover {
+  background-color: var(--color-light);
+  color: var(--color-navy-dark);
+  box-shadow: 0 8px 20px rgba(1, 38, 77, 0.16);
+}
+
+.primary-btn.white .btn-icon-disc {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.primary-btn.outline-light {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.primary-btn.outline-light:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+.primary-btn.outline-light .btn-icon-disc {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+/* Container & Section Spacing */
+.site-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 768px) {
+  .site-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.section-pad {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.section-pad-bottom {
+  padding-top: 0;
+  padding-bottom: 64px;
+}
+
+@media (min-width: 992px) {
+  .section-pad {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+  }
+
+  .section-pad-bottom {
+    padding-top: 0;
+    padding-bottom: var(--section-padding);
+  }
+}
+
+/* Surfaces & Cards */
+.clinic-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(33, 50, 69, 0.06);
+  transition: transform var(--transition-standard), box-shadow var(--transition-standard), border-color var(--transition-standard);
+}
+
+.clinic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(2, 94, 193, 0.2);
+}
+
+.us-card {
+  background-color: transparent;
+  transition: transform var(--transition-standard);
+}
+
+.us-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Social Update Ring from DESIGN.md Gradient Palette */
+.social-ring-gradient {
+  background: linear-gradient(45deg, var(--color-gradient-yellow), var(--color-gradient-pink), var(--color-gradient-purple));
+  padding: 2px;
+  border-radius: 50%;
+}
+
+/* Deep Navy Reference Gradient */
+.navy-gradient {
+  background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy-secondary) 100%);
+}
+
+/* Scroll Reveal Animations (IntersectionObserver driven) */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Dropdown Menu Smooth Animation */
+.nav-dropdown-panel {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+}
+
+.nav-dropdown-group:hover .nav-dropdown-panel,
+.nav-dropdown-group:focus-within .nav-dropdown-panel,
+.nav-dropdown-group.is-open .nav-dropdown-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

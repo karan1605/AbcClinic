@@ -1,0 +1,85 @@
+/* Breakpoints observed in DESIGN.md: 1400px, 1200px, 992px, 768px, 640px, 576px */
+
+@media (max-width: 1199.98px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 991.98px) {
+  :root {
+    --section-padding: 68px;
+  }
+
+  .top-bar,
+  .nav-menu,
+  .nav-actions .primary-btn {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex;
+  }
+
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hero__content,
+  .hero__media {
+    grid-column: span 1;
+  }
+
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .why-box,
+  .cta-banner {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .container {
+    padding: 0 18px;
+  }
+
+  .hero {
+    padding: 36px 0 52px;
+  }
+
+  .clinic-card {
+    padding: 22px;
+  }
+
+  .btn-group .primary-btn {
+    width: 100%;
+  }
+}

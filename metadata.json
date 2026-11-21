@@ -1,0 +1,8 @@
+{
+  "name": "ABC Clinic — Dhanbad, Jharkhand",
+  "description": "Official healthcare website framework for ABC Clinic in Dhanbad, Jharkhand, featuring appointment scheduling, services overview, specialist profiles, and patient contact portals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

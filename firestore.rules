@@ -1,0 +1,191 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: appointments
+    // Fields:
+    //   - fullName / name / patientName: string (required, 2-100 chars)
+    //   - email: string (required, 5-100 chars, valid email)
+    //   - phone: string (required, 7-25 chars)
+    //   - date: string (required, 10-35 chars)
+    //   - service: string (required, 2-100 chars)
+    //   - mode: string (required, 'in-clinic' | 'telemedicine')
+    //   - createdAt: timestamp (required, recent)
+    //   - timeSlot / time: string (optional, 0-100 chars)
+    //   - symptoms / notes / message: string (optional, 0-2000 chars)
+    //   - status: string (optional on create: 'pending')
+    //   - updatedAt: timestamp (optional on update)
+    //
+    // Collection: inquiries
+    // Fields:
+    //   - name: string (required, 2-100 chars)
+    //   - email: string (required, 5-100 chars, valid email)
+    //   - phone: string (required, 7-25 chars)
+    //   - message: string (required, 10-2000 chars)
+    //   - createdAt: timestamp (required, recent)
+    //   - status: string (optional on create: 'unread'|'pending'|'new')
+    //   - updatedAt: timestamp (optional on update)
+    //   - notes: string (optional on update, 0-2000 chars)
+    //
+    // ===============================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isStaff() {
+      return isAuthenticated() && (
+        ('role' in request.auth.token && request.auth.token.role in ['staff', 'admin', 'doctor', 'receptionist']) ||
+        ('staff' in request.auth.token && request.auth.token.staff == true) ||
+        ('admin' in request.auth.token && request.auth.token.admin == true) ||
+        ('email' in request.auth.token &&
+         'email_verified' in request.auth.token &&
+         request.auth.token.email_verified == true &&
+         request.auth.token.email.matches(".*@(abcclinic\\.com|abcclinic\\.in)$"))
+      );
+    }
+
+    function isValidEmail(email) {
+      return email is string &&
+        email.size() >= 5 &&
+        email.size() <= 100 &&
+        email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    function isValidPhone(phone) {
+      return phone is string &&
+        phone.size() >= 7 &&
+        phone.size() <= 25 &&
+        phone.matches("^[+]?[0-9\\s\\-().]{7,25}$");
+    }
+
+    function isValidDate(dateStr) {
+      return dateStr is string &&
+        dateStr.size() >= 10 &&
+        dateStr.size() <= 35 &&
+        (dateStr.matches("^[0-9]{4}-[0-9]{2}-[0-9]{2}$") ||
+         dateStr.matches("^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.*Z?$"));
+    }
+
+    function isRecent(time) {
+      return time is timestamp &&
+        time >= request.time - duration.value(5, 'm') &&
+        time <= request.time + duration.value(5, 'm');
+    }
+
+    function isValidString(val, minLen, maxLen) {
+      return val is string &&
+        val.size() >= minLen &&
+        val.size() <= maxLen;
+    }
+
+    function isValidOptionalString(data, field, minLen, maxLen) {
+      return !(field in data) ||
+        (data[field] is string &&
+         data[field].size() >= minLen &&
+         data[field].size() <= maxLen);
+    }
+
+    function hasValidPatientName(data) {
+      return (
+        (('fullName' in data && isValidString(data.fullName, 2, 100)) ||
+         ('name' in data && isValidString(data.name, 2, 100)) ||
+         ('patientName' in data && isValidString(data.patientName, 2, 100))) &&
+        (!('fullName' in data) || isValidString(data.fullName, 2, 100)) &&
+        (!('name' in data) || isValidString(data.name, 2, 100)) &&
+        (!('patientName' in data) || isValidString(data.patientName, 2, 100))
+      );
+    }
+
+    function isValidAppointmentCreate(data) {
+      return data.keys().hasOnly([
+        'fullName', 'name', 'patientName',
+        'email', 'phone', 'date', 'service', 'mode',
+        'createdAt', 'timeSlot', 'time',
+        'symptoms', 'notes', 'message', 'status'
+      ]) &&
+      hasValidPatientName(data) &&
+      'email' in data && isValidEmail(data.email) &&
+      'phone' in data && isValidPhone(data.phone) &&
+      'date' in data && isValidDate(data.date) &&
+      'service' in data && isValidString(data['service'], 2, 100) &&
+      'mode' in data && (data.mode in ['in-clinic', 'telemedicine']) &&
+      'createdAt' in data && isRecent(data.createdAt) &&
+      isValidOptionalString(data, 'timeSlot', 0, 100) &&
+      isValidOptionalString(data, 'time', 0, 100) &&
+      isValidOptionalString(data, 'symptoms', 0, 2000) &&
+      isValidOptionalString(data, 'notes', 0, 2000) &&
+      isValidOptionalString(data, 'message', 0, 2000) &&
+      (!('status' in data) || data.status == 'pending');
+    }
+
+    function isValidAppointmentUpdate(data) {
+      return data.keys().hasOnly([
+        'fullName', 'name', 'patientName',
+        'email', 'phone', 'date', 'service', 'mode',
+        'createdAt', 'timeSlot', 'time',
+        'symptoms', 'notes', 'message', 'status', 'updatedAt'
+      ]) &&
+      hasValidPatientName(data) &&
+      'email' in data && isValidEmail(data.email) &&
+      'phone' in data && isValidPhone(data.phone) &&
+      'date' in data && isValidDate(data.date) &&
+      'service' in data && isValidString(data['service'], 2, 100) &&
+      'mode' in data && (data.mode in ['in-clinic', 'telemedicine']) &&
+      'createdAt' in data && data.createdAt == resource.data.createdAt &&
+      isValidOptionalString(data, 'timeSlot', 0, 100) &&
+      isValidOptionalString(data, 'time', 0, 100) &&
+      isValidOptionalString(data, 'symptoms', 0, 2000) &&
+      isValidOptionalString(data, 'notes', 0, 2000) &&
+      isValidOptionalString(data, 'message', 0, 2000) &&
+      (!('status' in data) || data.status in ['pending', 'confirmed', 'completed', 'cancelled', 'rescheduled', 'no-show']) &&
+      (!('updatedAt' in data) || data.updatedAt is timestamp);
+    }
+
+    function isValidInquiryCreate(data) {
+      return data.keys().hasAll(['name', 'email', 'phone', 'message', 'createdAt']) &&
+        data.keys().hasOnly(['name', 'email', 'phone', 'message', 'createdAt', 'status']) &&
+        isValidString(data.name, 2, 100) &&
+        isValidEmail(data.email) &&
+        isValidPhone(data.phone) &&
+        isValidString(data.message, 10, 2000) &&
+        isRecent(data.createdAt) &&
+        (!('status' in data) || data.status in ['unread', 'pending', 'new']);
+    }
+
+    function isValidInquiryUpdate(data) {
+      return data.keys().hasAll(['name', 'email', 'phone', 'message', 'createdAt']) &&
+        data.keys().hasOnly(['name', 'email', 'phone', 'message', 'createdAt', 'status', 'updatedAt', 'notes']) &&
+        isValidString(data.name, 2, 100) &&
+        isValidEmail(data.email) &&
+        isValidPhone(data.phone) &&
+        isValidString(data.message, 10, 2000) &&
+        data.createdAt == resource.data.createdAt &&
+        (!('status' in data) || data.status in ['unread', 'read', 'in-progress', 'resolved', 'archived']) &&
+        (!('updatedAt' in data) || data.updatedAt is timestamp) &&
+        isValidOptionalString(data, 'notes', 0, 2000);
+    }
+
+    match /appointments/{appointmentId} {
+      allow create: if isValidAppointmentCreate(request.resource.data);
+      allow read: if isStaff();
+      allow update: if isStaff() && isValidAppointmentUpdate(request.resource.data);
+      allow delete: if isStaff();
+    }
+
+    match /inquiries/{inquiryId} {
+      allow create: if isValidInquiryCreate(request.resource.data);
+      allow read: if isStaff();
+      allow update: if isStaff() && isValidInquiryUpdate(request.resource.data);
+      allow delete: if isStaff();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

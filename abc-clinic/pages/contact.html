@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | ABC Clinic, Dhanbad, Jharkhand</title>
+    <meta
+      name="description"
+      content="Contact ABC Clinic in Dhanbad, Jharkhand — Phone [PHONE], Email [EMAIL], Operating Hours [HOURS], and patient inquiry form."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="top-bar">
+        <div class="container top-bar__inner">
+          <div class="top-bar__group">
+            <span class="top-bar__item">Dhanbad, Jharkhand</span>
+            <span class="top-bar__item">Hours: [HOURS]</span>
+          </div>
+          <div class="top-bar__group">
+            <a class="top-bar__item" href="tel:[PHONE]"><span class="top-bar__accent">Helpline:</span> [PHONE]</a>
+            <a class="top-bar__item" href="mailto:[EMAIL]">[EMAIL]</a>
+            <a class="top-bar__item" href="appointment.html#telemedicine">Telemedicine</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-nav-bar">
+        <div class="container nav-bar__inner">
+          <a href="../index.html" class="brand-link" aria-label="ABC Clinic Home">
+            <img src="../assets/images/logo/logo-placeholder.svg" alt="[LOGO_PLACEHOLDER]" class="brand-link__img" />
+            <span class="brand-link__text">
+              <span class="brand-link__name">ABC Clinic</span>
+              <span class="brand-link__token">[LOGO_PLACEHOLDER]</span>
+            </span>
+          </a>
+
+          <nav class="nav-menu" aria-label="Primary Navigation">
+            <div class="nav-item"><a href="../index.html" class="nav-link">Home</a></div>
+            <div class="nav-item"><a href="about.html" class="nav-link">About</a></div>
+            <div class="nav-item"><a href="services.html" class="nav-link">Services</a></div>
+            <div class="nav-item"><a href="doctors.html" class="nav-link">Doctors</a></div>
+            <div class="nav-item"><a href="contact.html" class="nav-link is-active" aria-current="page">Contact</a></div>
+          </nav>
+
+          <div class="nav-actions">
+            <a href="appointment.html" class="primary-btn">
+              <span class="primary-btn__icon" aria-hidden="true">→</span>
+              <span>Book Appointment</span>
+            </a>
+            <button type="button" class="mobile-menu-toggle" data-mobile-toggle aria-expanded="false" aria-label="Open navigation menu">☰</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-drawer" data-mobile-drawer>
+        <div class="mobile-drawer__inner">
+          <a href="../index.html" class="mobile-nav-link">Home</a>
+          <a href="about.html" class="mobile-nav-link">About ABC Clinic</a>
+          <a href="services.html" class="mobile-nav-link">Services — [SERVICES]</a>
+          <a href="doctors.html" class="mobile-nav-link">Doctors</a>
+          <a href="contact.html" class="mobile-nav-link is-active">Contact</a>
+          <a href="appointment.html" class="primary-btn" style="margin-top: 10px;">
+            <span class="primary-btn__icon" aria-hidden="true">→</span>
+            <span>Book Appointment</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="navy-gradient page-hero">
+        <div class="container">
+          <div class="page-hero__inner">
+            <p class="breadcrumb"><a href="../index.html">Home</a> / Contact Us</p>
+            <h1 class="heading-hero text-white">Contact ABC Clinic — Dhanbad, Jharkhand</h1>
+            <p class="lead-text text-white-muted">
+              Reach our reception desk for directions, consultation hours, or patient support inquiries.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--white">
+        <div class="container">
+          <div class="grid-4" style="margin-bottom: 48px;">
+            <div class="clinic-card reveal reveal-delay-1">
+              <h2 class="heading-sub">Address</h2>
+              <p class="lead-text" style="font-size: 14px;">[FULL_ADDRESS], Dhanbad, Jharkhand</p>
+            </div>
+            <div class="clinic-card reveal reveal-delay-2">
+              <h2 class="heading-sub">Phone</h2>
+              <a href="tel:[PHONE]" class="lead-text" style="font-size: 15px; color: var(--color-primary); font-weight: 600;">[PHONE]</a>
+            </div>
+            <div class="clinic-card reveal reveal-delay-3">
+              <h2 class="heading-sub">Email</h2>
+              <a href="mailto:[EMAIL]" class="lead-text" style="font-size: 15px; color: var(--color-primary); font-weight: 600;">[EMAIL]</a>
+            </div>
+            <div class="clinic-card reveal reveal-delay-4">
+              <h2 class="heading-sub">Hours</h2>
+              <p class="lead-text" style="font-size: 14px;">[HOURS]</p>
+            </div>
+          </div>
+
+          <div class="grid-2" style="align-items: start;">
+            <div class="clinic-card reveal">
+              <h2 class="heading-sub" style="font-size: 24px; margin-bottom: 16px;">Send Us a Message</h2>
+              <form data-validate-form="contact" novalidate>
+                <div class="form-field">
+                  <label class="form-label" for="contact-name">Name <span class="form-required">*</span></label>
+                  <input class="form-input" id="contact-name" name="name" type="text" required placeholder="Your full name" />
+                  <span class="form-error"></span>
+                </div>
+                <div class="form-grid">
+                  <div class="form-field">
+                    <label class="form-label" for="contact-email">Email <span class="form-required">*</span></label>
+                    <input class="form-input" id="contact-email" name="email" type="email" required placeholder="you@example.com" />
+                    <span class="form-error"></span>
+                  </div>
+                  <div class="form-field">
+                    <label class="form-label" for="contact-phone">Phone <span class="form-required">*</span></label>
+                    <input class="form-input" id="contact-phone" name="phone" type="tel" required placeholder="+91 XXXXX XXXXX" />
+                    <span class="form-error"></span>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="contact-message">Message <span class="form-required">*</span></label>
+                  <textarea class="form-textarea" id="contact-message" name="message" rows="5" required placeholder="Write your inquiry..."></textarea>
+                  <span class="form-error"></span>
+                </div>
+                <button type="submit" class="primary-btn">
+                  <span class="primary-btn__icon" aria-hidden="true">→</span>
+                  <span>Submit Message</span>
+                </button>
+                <div class="form-status" data-form-status role="status" aria-live="polite"></div>
+              </form>
+            </div>
+
+            <div class="reveal reveal-delay-2" style="display: flex; flex-direction: column; gap: 24px;">
+              <div class="clinic-card" style="background: var(--color-light);">
+                <p class="kicker">Location Map Placeholder</p>
+                <h3 class="heading-sub">ABC Clinic · Dhanbad, Jharkhand</h3>
+                <div style="margin-top: 16px; padding: 36px 20px; border: 1px dashed rgba(2,94,193,0.35); border-radius: 10px; background: #fff; text-align: center;">
+                  <strong style="color: var(--color-dark); display: block;">[MAP_EMBED_PLACEHOLDER]</strong>
+                  <p style="font-size: 13px; margin-top: 6px;">Insert verified Google Maps embed iframe once [FULL_ADDRESS] is confirmed.</p>
+                </div>
+              </div>
+
+              <div class="clinic-card navy-gradient" style="border: 0;">
+                <h3 class="heading-sub text-white">Direct WhatsApp Inquiry</h3>
+                <p class="lead-text text-white-muted" style="font-size: 14px;">
+                  Replace [WHATSAPP_NUMBER] with the clinic's official WhatsApp helpline.
+                </p>
+                <div class="btn-group">
+                  <a href="https://wa.me/[WHATSAPP_NUMBER]?text=Hello%20ABC%20Clinic" target="_blank" rel="noopener noreferrer" class="primary-btn white">
+                    <span class="primary-btn__icon" aria-hidden="true">→</span>
+                    <span>Chat on WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer navy-gradient">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a href="../index.html" class="brand-link brand-link--light">
+              <img src="../assets/images/logo/logo-placeholder.svg" alt="[LOGO_PLACEHOLDER]" class="brand-link__img" />
+              <span class="brand-link__text">
+                <span class="brand-link__name">ABC Clinic</span>
+                <span class="brand-link__token">[LOGO_PLACEHOLDER]</span>
+              </span>
+            </a>
+            <p class="lead-text text-white-muted" style="font-size: 14px; line-height: 24px;">
+              Healthcare clinic in Dhanbad, Jharkhand providing organized outpatient care for [SERVICES].
+            </p>
+          </div>
+          <div>
+            <h3 class="footer-heading">Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="about.html">About Clinic</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="doctors.html">Doctors</a></li>
+              <li><a href="appointment.html">Book Appointment</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Services</h3>
+            <ul class="footer-links">
+              <li><a href="services.html#consultations">Outpatient Consultations</a></li>
+              <li><a href="services.html#diagnostics">Diagnostic Assessment</a></li>
+              <li><a href="services.html">Clinical Care — [SERVICES]</a></li>
+              <li><a href="appointment.html#telemedicine">Telemedicine</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-heading">Contact Info</h3>
+            <ul class="footer-links">
+              <li>[FULL_ADDRESS], Dhanbad, Jharkhand</li>
+              <li><a href="tel:[PHONE]">Phone: [PHONE]</a></li>
+              <li><a href="mailto:[EMAIL]">Email: [EMAIL]</a></li>
+              <li>Hours: [HOURS]</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 ABC Clinic, Dhanbad, Jharkhand. All rights reserved.</span>
+          <span>Placeholder Framework — Replace Bracketed Tokens Before Deployment</span>
+        </div>
+      </div>
+    </footer>
+
+    <div class="floating-actions">
+      <a href="https://wa.me/[WHATSAPP_NUMBER]?text=Hello%20ABC%20Clinic" target="_blank" rel="noopener noreferrer" class="float-btn float-btn--whatsapp" aria-label="WhatsApp ABC Clinic">WA</a>
+      <button type="button" class="float-btn float-btn--top" data-back-to-top aria-label="Back to top">↑</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+    <script src="../js/firebase-init.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/forms.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

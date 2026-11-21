@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="[MEDICAL_IMAGE] Medical Visual Placeholder">
+  <defs>
+    <linearGradient id="medBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#013874"/>
+      <stop offset="100%" stop-color="#025EC1"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" rx="16" fill="url(#medBg)"/>
+  <circle cx="400" cy="240" r="48" fill="#FFFFFF" fill-opacity="0.15"/>
+  <path d="M366 240H384L394 218L408 262L418 240H434" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="278" y="316" width="244" height="46" rx="10" fill="#FFFFFF" fill-opacity="0.16" stroke="#FFFFFF" stroke-opacity="0.28"/>
+  <text x="400" y="346" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF">[MEDICAL_IMAGE]</text>
+  <text x="400" y="392" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="14" font-weight="500" fill="#FFFFFF" fill-opacity="0.8">Replace With Approved Clinical or Telemedicine Visual</text>
+</svg>
